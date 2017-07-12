@@ -14,15 +14,19 @@ func quickSort2(array []int, left, right int) {
 	if size <= 3 {
 		manualSort(array, left, right-1, right)
 	} else {
-		median := (left + right) / 2
-		manualSort(array, left, median, right)
-		swap2(array, median, right-1)
-		pivot := array[right-1]
+		pivot := mediaOf3(array, left, right)
 
 		partition := partitionIt2(array, left, right, pivot)
 		quickSort2(array, left, partition-1)
 		quickSort2(array, partition+1, right)
 	}
+}
+
+func mediaOf3(values []int, left, right int) int {
+	median := (left + right) / 2
+	manualSort(values, left, median, right)
+	swap2(values, median, right-1)
+	return values[right-1]
 }
 
 func partitionIt2(values []int, left, right, pivot int) int {
