@@ -1,27 +1,27 @@
 package main
 
 import (
-	"math/rand"
 	"fmt"
+	"math/rand"
 )
 
 func sort2(array []int) {
-	quickSort2(array, 0, len(array) - 1)
+	quickSort2(array, 0, len(array)-1)
 }
 
-func quickSort2(array []int, left, right int)  {
+func quickSort2(array []int, left, right int) {
 	size := right - left + 1
 	if size <= 3 {
-		manualSort(array, left, right - 1, right)
+		manualSort(array, left, right-1, right)
 	} else {
 		median := (left + right) / 2
 		manualSort(array, left, median, right)
-		swap2(array, median, right - 1)
-		pivot := array[right - 1]
+		swap2(array, median, right-1)
+		pivot := array[right-1]
 
 		partition := partitionIt2(array, left, right, pivot)
-		quickSort2(array, left, partition - 1)
-		quickSort2(array, partition + 1, right)
+		quickSort2(array, left, partition-1)
+		quickSort2(array, partition+1, right)
 	}
 }
 
@@ -30,11 +30,11 @@ func partitionIt2(values []int, left, right, pivot int) int {
 	rightPtr := right - 1
 
 	for true {
-		leftPtr++
-		for ; values[leftPtr] < pivot; leftPtr++ {}
+		for leftPtr++; values[leftPtr] < pivot; leftPtr++ {
+		}
 
-		rightPtr--
-		for ; values[rightPtr] > pivot && rightPtr > 0; rightPtr-- {}
+		for rightPtr--; values[rightPtr] > pivot && rightPtr > 0; rightPtr-- {
+		}
 
 		if leftPtr >= rightPtr {
 			break
@@ -43,7 +43,7 @@ func partitionIt2(values []int, left, right, pivot int) int {
 		}
 	}
 
-	swap2(values, leftPtr, right - 1)
+	swap2(values, leftPtr, right-1)
 	return leftPtr
 }
 
@@ -82,7 +82,6 @@ func printArray2(array []int) {
 	}
 	fmt.Println()
 }
-
 
 func main() {
 	const N = 16

@@ -26,12 +26,10 @@ func partitionIt(values []int, left int, right, pivot int) int {
 	rightPtr := right
 
 	for true {
-		leftPtr++
-		for ; values[leftPtr] < pivot; leftPtr++ {
+		for leftPtr++; values[leftPtr] < pivot; leftPtr++ {
 		}
 
-		rightPtr--
-		for ; rightPtr > 0 && values[rightPtr] > pivot; rightPtr-- {
+		for rightPtr--; rightPtr > 0 && values[rightPtr] > pivot; rightPtr-- {
 		}
 
 		if leftPtr >= rightPtr {
